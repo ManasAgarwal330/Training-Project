@@ -10,6 +10,7 @@ interface RouteParams{
 
 const Recordings: FC<Props> = (props) => {
   const {lectureNumber,batchNumber} = useParams<RouteParams>();
+  console.log(lectureNumber,batchNumber);
   return (
     <>
       <div>This is Recordings Page.</div>
