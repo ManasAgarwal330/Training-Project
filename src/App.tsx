@@ -17,7 +17,7 @@ const App: FC<Props> = (props) => {
           <Route path={["/login", "/signup"]} exact>
             <AuthHeroPage />
           </Route>
-          <Route path={["/dashboard", "/recordings"]} exact>
+          <Route path={["/dashboard", "/recordings/:batchNumber/:lectureNumber"]} exact>
             <AppContainerPage />
           </Route>
           <Route>

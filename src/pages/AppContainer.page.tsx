@@ -14,7 +14,7 @@ const AppContainer:FC<Props> = (props) => {
             <Route path='/dashboard'>
                 <DashboardPage />
             </Route>
-            <Route path='/recordings'>
+            <Route path='/recordings/:batchNumber/:lectureNumber'>
                 <RecordingsPage />
             </Route>
         </Switch>
