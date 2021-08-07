@@ -5,7 +5,9 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Toggle from "../components/Toggle";
-import Footer from '../components/Footer';
+import Footer from "../components/Footer";
+import Input from "../components/Input";
+import Button from "../components/Button";
 
 interface Props {}
 
@@ -38,53 +40,29 @@ const Login: FC<Props> = (props) => {
               <span className="text-primary underline">Create an account</span>
             </Link>
           </p>
-          <form action="">
-            <div className="mt-4">
-              <div>
-                <label htmlFor="email" className="sr-only">
-                  Email
-                </label>
-              </div>
-              <div className="flex text-sm pt-2 pb-2 border-b border-gray-300">
-                <BiUser className="h-6 w-6 text-primary mr-2" />
-                <input
-                  type="email"
-                  {...myForm.getFieldProps("email")}
-                  id="email"
-                  required
-                  autoComplete="email"
-                  placeholder="Email"
-                  className="outline-none text-gray-500"
-                />
-              </div>
-              {console.log(myForm.touched.email)}
-              <div className={"mb-6 text-red-700 h-auto w-full font-display"}>
-                {myForm.touched.email && myForm.errors.email}
-              </div>
-            </div>
-            <div className="mt-4">
-              <div>
-                <label htmlFor="email" className="sr-only">
-                  Email
-                </label>
-              </div>
-              <div className="flex text-sm pt-2 pb-2 border-b border-gray-300">
+          <form action="" onSubmit={myForm.handleSubmit}>
+            <Input
+              type="email"
+              touched={myForm.touched.email}
+              required
+              autoComplete="email"
+              placeholder="Email"
+              {...myForm.getFieldProps("email")}
+              errors={myForm.errors.email}
+              icon={<BiUser className="h-6 w-6 text-primary mr-2" />}
+            />
+            <Input
+              type={enabled ? 'text' : 'password'}
+              touched={myForm.touched.password}
+              required
+              autoComplete="password"
+              placeholder="Password"
+              {...myForm.getFieldProps("password")}
+              errors={myForm.errors.password}
+              icon={
                 <RiLockPasswordLine className="h-6 w-6 text-primary mr-2" />
-                <input
-                  type="password"
-                  {...myForm.getFieldProps("password")}
-                  id="password"
-                  required
-                  autoComplete="password"
-                  placeholder="Password"
-                  className="outline-none text-gray-500"
-                />
-              </div>
-              {console.log(myForm.touched.password)}
-              <div className={"mb-6 text-red-700 h-auto w-full font-display"}>
-                {myForm.touched.email && myForm.errors.password}
-              </div>
-            </div>
+              }
+            />
             <div className="text-sm mb-7 flex">
               <p className="font-display tracking-widest text-primaryDark">
                 Show Password
@@ -96,12 +74,7 @@ const Login: FC<Props> = (props) => {
               />
             </div>
             <div className="mb-5">
-              <button
-                className="font-display text-sm text-white bg-primary py-2 px-5 rounded-md border-none
-              shadow-2xl drop-shadow-xl"
-              >
-                Log In
-              </button>
+              <Button type='submit' disabled={!myForm.isValid}>Log In</Button>
             </div>
             <div className="w-full text-center">
               <input
@@ -122,7 +95,7 @@ const Login: FC<Props> = (props) => {
               </Link>
             </div>
           </form>
-          <Footer className='mt-20 text-center' />
+          <Footer className="mt-20 text-center" />
         </div>
       </div>
     </>

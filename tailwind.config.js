@@ -10,6 +10,9 @@ module.exports = {
       fontFamily: {
         'display': 'Nunito'
       },
+      minHeight:{
+        '6':'24px',
+      },
     },
   },
   variants: {
