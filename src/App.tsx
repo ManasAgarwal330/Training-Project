@@ -1,9 +1,8 @@
 import { FC, memo } from "react";
-import { BrowserRouter,Switch,Route } from "react-router-dom";
-import DashboardPage from "./pages/Dashboard.page";
-import LoginPage from './pages/Login.page';
-import RecordingsPage from "./pages/Recordings.page";
-import SignUpPage from "./pages/SignUp.page";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import AuthHeroPage from "./pages/AuthHero.page";
+import NotFoundPage from "./pages/NotFound.page";
+import AppContainerPage from "./pages/AppContainer.page";
 
 interface Props {}
 
@@ -12,17 +11,17 @@ const App: FC<Props> = (props) => {
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/login" exact>
-            <LoginPage />
+          <Route path="/" exact>
+            <Redirect to="/login" />
           </Route>
-          <Route path="/dashboard" exact>
-            <DashboardPage />
+          <Route path={["/login", "/signup"]} exact>
+            <AuthHeroPage />
           </Route>
-          <Route path="/recordings" exact>
-            <RecordingsPage />
+          <Route path={["/dashboard", "/recordings"]} exact>
+            <AppContainerPage />
           </Route>
-          <Route path="/signup" exact>
-            <SignUpPage />
+          <Route>
+            <NotFoundPage />
           </Route>
         </Switch>
       </BrowserRouter>
