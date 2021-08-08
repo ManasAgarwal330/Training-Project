@@ -26,7 +26,7 @@ const Input: FC<Props> = ({
         <input
           {...rest}
           placeholder={placeholder}
-          className={"outline-none text-gray-500" + className}
+          className={"outline-none text-gray-500 w-full"}
         />
       </div>
       <div className={"mb-6 text-red-700 min-h-6 w-full font-display h-auto lg:mb-4"}>

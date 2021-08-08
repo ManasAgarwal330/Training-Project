@@ -6,8 +6,8 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Toggle from "../components/Toggle";
 import Footer from "../components/Footer";
-import Input from "../components/Input";
-import Button from "../components/Button";
+import Input from "../components/Input/Input";
+import Button from "../components/Button/Button";
 
 interface Props {}
 
