@@ -13,6 +13,12 @@ module.exports = {
       minHeight:{
         '6':'24px',
       },
+      screens:{
+        'exsm':'590px',
+      },
+      width:{
+        '120':'480px',
+      }
     },
   },
   variants: {

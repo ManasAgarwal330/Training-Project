@@ -28,9 +28,9 @@ const Login: FC<Props> = (props) => {
   });
 
   return (
-    <>
-      <div className="flex-grow py-3 px-11  flex justify-center">
-        <div className="w-full font-display ">
+    <div className='flex justify-center'>
+      <div className="h-full py-3 px-11 flex justify-center w-120">
+        <div className="w-full font-display relative">
           <h1 className="text-4xl mb-2">
             Log In to <span className="text-primary"> CORK </span>
           </h1>
@@ -52,7 +52,7 @@ const Login: FC<Props> = (props) => {
               icon={<BiUser className="h-6 w-6 text-primary mr-2" />}
             />
             <Input
-              type={enabled ? 'text' : 'password'}
+              type={enabled ? "text" : "password"}
               touched={myForm.touched.password}
               required
               autoComplete="password"
@@ -63,18 +63,22 @@ const Login: FC<Props> = (props) => {
                 <RiLockPasswordLine className="h-6 w-6 text-primary mr-2" />
               }
             />
-            <div className="text-sm mb-7 flex">
-              <p className="font-display tracking-widest text-primaryDark">
-                Show Password
-              </p>
-              <Toggle
-                enabled={enabled}
-                setEnabled={setEnabled}
-                className="ml-3"
-              />
-            </div>
-            <div className="mb-5">
-              <Button type='submit' disabled={!myForm.isValid}>Log In</Button>
+            <div className="exsm:flex justify-between">
+              <div className="text-sm mb-7 flex">
+                <p className="font-display tracking-widest text-primaryDark">
+                  Show Password
+                </p>
+                <Toggle
+                  enabled={enabled}
+                  setEnabled={setEnabled}
+                  className="ml-3"
+                />
+              </div>
+              <div className="mb-5">
+                <Button type="submit" disabled={!myForm.isValid}>
+                  Log In
+                </Button>
+              </div>
             </div>
             <div className="w-full text-center">
               <input
@@ -95,10 +99,10 @@ const Login: FC<Props> = (props) => {
               </Link>
             </div>
           </form>
-          <Footer className="mt-20 text-center" />
+          <Footer className="text-sm font-display tracking-widest leading-relaxed w-full text-center mt-24 relative bottom-0" />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,13 +1,20 @@
-import {FC,memo} from 'react';
+import { FC, memo } from "react";
 
-interface Props{};
+interface Props {}
 
-const AuthSection:FC<Props> = (props) => {
-  return <>
-    <div className='flex-grow bg-black hidden lg:block'>
-        <p>This section contains the logo of the website.</p>
-    </div>
-  </>
+const AuthSection: FC<Props> = (props) => {
+  return (
+    <>
+      <div className="bg-black hidden lg:block  px-20">
+        <div className="flex items-center h-full">
+          <img
+            src="https://cdn.pixabay.com/photo/2015/12/10/16/39/shield-1086703_960_720.png"
+            alt="logo"
+          />
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default memo(AuthSection);

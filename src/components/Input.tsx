@@ -29,7 +29,7 @@ const Input: FC<Props> = ({
           className={"outline-none text-gray-500" + className}
         />
       </div>
-      <div className={"mb-6 text-red-700 min-h-6 w-full font-display h-auto"}>
+      <div className={"mb-6 text-red-700 min-h-6 w-full font-display h-auto lg:mb-4"}>
         {touched && errors}
       </div>
     </>

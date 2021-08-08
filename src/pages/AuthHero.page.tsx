@@ -8,7 +8,7 @@ interface Props{};
 
 const AuthHero:FC<Props> = (props) => {
   return <>
-    <div className='flex h-screen'>
+    <div className='lg:grid lg:grid-cols-2 h-screen'>
         <Switch>
             <Route path='/login'>
                 <LoginPage />
