@@ -17,7 +17,7 @@ const Button: FC<Props> = ({
   let addClass = "";
   if (appearance === "primary") {
     if (theme === "primary") {
-      addClass = `${disabled ? "bg-blue-400" : "bg-primary"}`;
+      addClass = `${disabled ? "bg-blue-900" : "bg-primary"}`;
     } else if (theme === "danger") {
       addClass = `${disabled ? "bg-red-900" : "bg-red-600"}`;
     } else {

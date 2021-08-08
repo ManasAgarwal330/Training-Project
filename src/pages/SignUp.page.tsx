@@ -2,7 +2,7 @@ import { FC, memo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Input from "../components/Input/Input";
+import Input from "../components/Input";
 import { BiUser } from "react-icons/bi";
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
@@ -53,7 +53,7 @@ const SignUp: FC<Props> = (props) => {
               placeholder="Username"
               {...myForm.getFieldProps("username")}
               errors={myForm.errors.username}
-              icon={<BiUser className="h-6 w-6 text-primary mr-2" />}
+              Icon={BiUser}
             />
             <Input
               type="email"
@@ -63,7 +63,7 @@ const SignUp: FC<Props> = (props) => {
               placeholder="Email"
               {...myForm.getFieldProps("email")}
               errors={myForm.errors.email}
-              icon={<AiOutlineMail className="h-6 w-6 text-primary mr-2" />}
+              Icon={AiOutlineMail}
             />
             <Input
               type={enabled ? "text" : "password"}
@@ -73,9 +73,7 @@ const SignUp: FC<Props> = (props) => {
               placeholder="Password"
               {...myForm.getFieldProps("password")}
               errors={myForm.errors.password}
-              icon={
-                <RiLockPasswordLine className="h-6 w-6 text-primary mr-2" />
-              }
+              Icon={RiLockPasswordLine}
             />
             <div className="w-full -mt-2">
               <input type="checkbox" id="check" name="check" className="mr-2" />

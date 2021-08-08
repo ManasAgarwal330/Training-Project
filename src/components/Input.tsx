@@ -1,15 +1,16 @@
 import { FC, InputHTMLAttributes, memo } from "react";
+import { IconType } from "react-icons/lib";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   touched: boolean | undefined;
   errors: string | undefined;
-  icon?: any;
+  Icon: IconType;
 }
 
 const Input: FC<Props> = ({
   touched,
   errors,
-  icon,
+  Icon,
   placeholder,
   className,
   ...rest
@@ -22,7 +23,7 @@ const Input: FC<Props> = ({
         </label>
       </div>
       <div className="flex text-sm pt-2 pb-2 border-b border-gray-300">
-        {icon}
+        {Icon && <Icon className="h-6 w-6 text-primary mr-2" />}
         <input
           {...rest}
           placeholder={placeholder}
@@ -34,6 +35,8 @@ const Input: FC<Props> = ({
       </div>
     </>
   );
+};
+Input.defaultProps = {
 };
 
 export default memo(Input);

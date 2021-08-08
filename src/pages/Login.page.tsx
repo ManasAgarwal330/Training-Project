@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Toggle from "../components/Toggle";
 import Footer from "../components/Footer";
-import Input from "../components/Input/Input";
+import Input from "../components/Input";
 import Button from "../components/Button/Button";
 
 interface Props {}
@@ -49,7 +49,7 @@ const Login: FC<Props> = (props) => {
               placeholder="Email"
               {...myForm.getFieldProps("email")}
               errors={myForm.errors.email}
-              icon={<BiUser className="h-6 w-6 text-primary mr-2" />}
+              Icon={BiUser}
             />
             <Input
               type={enabled ? "text" : "password"}
@@ -59,9 +59,7 @@ const Login: FC<Props> = (props) => {
               placeholder="Password"
               {...myForm.getFieldProps("password")}
               errors={myForm.errors.password}
-              icon={
-                <RiLockPasswordLine className="h-6 w-6 text-primary mr-2" />
-              }
+              Icon={RiLockPasswordLine}
             />
             <div className="exsm:flex justify-between">
               <div className="text-sm mb-7 flex">
