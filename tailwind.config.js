@@ -6,19 +6,20 @@ module.exports = {
       colors: {
         primary: "#4361ee",
         primaryDark: "#3b3f5c",
+        lightGray: "#F5F5F5",
       },
       fontFamily: {
-        'display': 'Nunito'
+        display: "Nunito",
       },
-      minHeight:{
-        '6':'24px',
+      minHeight: {
+        6: "24px",
       },
-      screens:{
-        'exsm':'590px',
+      screens: {
+        exsm: "590px",
       },
-      width:{
-        '120':'480px',
-      }
+      width: {
+        120: "480px",
+      },
     },
   },
   variants: {
