@@ -2,7 +2,7 @@ import { FC, memo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Input from "../components/Input";
+import Input from "../components/Input/Input";
 import { BiUser } from "react-icons/bi";
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
