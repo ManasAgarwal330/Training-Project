@@ -1,11 +1,13 @@
-import {FC,memo} from 'react';
+import { FC, memo } from "react";
 
-interface Props{};
+interface Props {}
 
-const NotFound:FC<Props> = (props) => {
-  return <>
-    <div>This is Not Found Page.</div>
-  </>
+const NotFound: FC<Props> = (props) => {
+  return (
+    <>
+      <div>This is Not Found Page.</div>
+    </>
+  );
 };
 
 export default memo(NotFound);
