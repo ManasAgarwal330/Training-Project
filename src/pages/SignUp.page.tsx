@@ -6,7 +6,7 @@ import Input from "../components/Input/Input";
 import { BiUser } from "react-icons/bi";
 import { AiOutlineMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
-import Toggle from "../components/Toggle";
+import Toggle from "../components/Toggle/Toggle";
 import Button from "../components/Button/Button";
 import Footer from "../components/Footer";
 
