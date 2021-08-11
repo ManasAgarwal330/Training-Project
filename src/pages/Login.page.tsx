@@ -1,5 +1,5 @@
 import { FC, memo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { BiUser } from "react-icons/bi";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useFormik } from "formik";
@@ -8,11 +8,14 @@ import Toggle from "../components/Toggle/Toggle";
 import Footer from "../components/Footer";
 import Input from "../components/Input/Input";
 import Button from "../components/Button/Button";
+import { FaSpinner } from "react-icons/fa";
+import { login } from "../api";
 
 interface Props {}
 
 const Login: FC<Props> = (props) => {
   const [enabled, setEnabled] = useState(false);
+  const history = useHistory();
   const myForm = useFormik({
     initialValues: {
       email: "",
@@ -23,12 +26,15 @@ const Login: FC<Props> = (props) => {
       password: yup.string().required().min(8),
     }),
     onSubmit: (data) => {
-      console.log(data);
+      login(data).then((user) => {
+        console.log(user.first_name)
+        history.push("./dashboard");
+      });
     },
   });
 
   return (
-    <div className='flex justify-center'>
+    <div className="flex justify-center">
       <div className="h-full py-3 px-11 flex justify-center w-120">
         <div className="w-full font-display relative">
           <h1 className="text-4xl mb-2">
@@ -40,12 +46,11 @@ const Login: FC<Props> = (props) => {
               <span className="text-primary underline">Create an account</span>
             </Link>
           </p>
-          <form action="" onSubmit={myForm.handleSubmit}>
+          <form action="" onSubmit={myForm.handleSubmit} autoComplete="on">
             <Input
               type="email"
               touched={myForm.touched.email}
               required
-              autoComplete="email"
               placeholder="Email"
               {...myForm.getFieldProps("email")}
               errors={myForm.errors.email}
@@ -55,7 +60,6 @@ const Login: FC<Props> = (props) => {
               type={enabled ? "text" : "password"}
               touched={myForm.touched.password}
               required
-              autoComplete="password"
               placeholder="Password"
               {...myForm.getFieldProps("password")}
               errors={myForm.errors.password}
@@ -72,10 +76,15 @@ const Login: FC<Props> = (props) => {
                   className="ml-3"
                 />
               </div>
-              <div className="mb-5">
+              <div className="mb-5 flex items-center ">
                 <Button type="submit" disabled={!myForm.isValid}>
                   Log In
                 </Button>
+                <div className='h-8 w-8 ml-2'>
+                  {myForm.isSubmitting && (
+                    <FaSpinner className="text-primary animate-spin h-7 w-7" />
+                  )}
+                </div>
               </div>
             </div>
             <div className="w-full text-center">

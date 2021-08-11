@@ -14,6 +14,7 @@ const Toggle:FC<Props> = ({enabled,setEnabled,className})  => {
       <Switch
         checked={enabled}
         onChange={setEnabled}
+        type = 'button'
         className={`${enabled ? 'bg-blue-500' : 'bg-gray-300'}
           relative inline-flex flex-shrink-0 h-5 w-9 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-100 focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
       >

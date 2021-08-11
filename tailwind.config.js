@@ -7,6 +7,8 @@ module.exports = {
         primary: "#4361ee",
         primaryDark: "#3b3f5c",
         lightGray: "#F5F5F5",
+        blueDark: "#0e1726",
+        blueDarkLight: "#495057",
       },
       fontFamily: {
         display: "Nunito",
@@ -19,6 +21,10 @@ module.exports = {
       },
       width: {
         120: "480px",
+      },
+      minWidth: {
+        100: "100px",
+        370: "370px",
       },
     },
   },

@@ -9,6 +9,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import Toggle from "../components/Toggle/Toggle";
 import Button from "../components/Button/Button";
 import Footer from "../components/Footer";
+import { FaSpinner } from "react-icons/fa";
 
 interface Props {}
 
@@ -44,12 +45,11 @@ const SignUp: FC<Props> = (props) => {
               <span className="text-primary underline">Log In</span>
             </Link>
           </p>
-          <form action="" onSubmit={myForm.handleSubmit}>
+          <form action="" onSubmit={myForm.handleSubmit} autoComplete="on">
             <Input
               type="username"
               touched={myForm.touched.username}
               required
-              autoComplete="text"
               placeholder="Username"
               {...myForm.getFieldProps("username")}
               errors={myForm.errors.username}
@@ -59,7 +59,6 @@ const SignUp: FC<Props> = (props) => {
               type="email"
               touched={myForm.touched.email}
               required
-              autoComplete="email"
               placeholder="Email"
               {...myForm.getFieldProps("email")}
               errors={myForm.errors.email}
@@ -69,7 +68,6 @@ const SignUp: FC<Props> = (props) => {
               type={enabled ? "text" : "password"}
               touched={myForm.touched.password}
               required
-              autoComplete="password"
               placeholder="Password"
               {...myForm.getFieldProps("password")}
               errors={myForm.errors.password}
@@ -98,7 +96,7 @@ const SignUp: FC<Props> = (props) => {
                   className="ml-3"
                 />
               </div>
-              <div className="mb-20 exsm:mb-0">
+              <div className="mb-20 exsm:mb-0 flex items-center">
                 <Button
                   type="submit"
                   disabled={!myForm.isValid}
@@ -106,6 +104,9 @@ const SignUp: FC<Props> = (props) => {
                 >
                   Get Started!
                 </Button>
+                <div className='h-8 w-8 ml-2'>
+                  {myForm.isSubmitting && <FaSpinner className='h-7 w-7 text-primary animate-spin' />}
+                </div>
               </div>
             </div>
           </form>
