@@ -12,7 +12,7 @@ interface Props {
 const ListItem: FC<Props> = ({ Icon, title, isArrow }) => {
   const [openListItem, setOpenListItem] = useState(false);
   return (
-      <li
+      <button
         className={`flex items-center mb-2 w-full py-2 rounded-md px-1 cursor-pointer ${
                 openListItem ? "bg-white shadow-md" : ""
               } hover:bg-gray-300 hover:shadow-md`}
@@ -21,11 +21,11 @@ const ListItem: FC<Props> = ({ Icon, title, isArrow }) => {
         <Icon className="h-5 w-5 text-primaryDark mr-2" />
         <span className="text-black text-lg font-display">{title}</span>
         {isArrow && (
-          <button className="flex-grow flex justify-end">
+          <span className="flex-grow flex justify-end">
             {openListItem ? <IoMdArrowDropdown className="h-5 w-5" />:<IoMdArrowDropright className="h-5 w-5" /> }
-          </button>
+          </span>
         )}
-      </li>
+      </button>
   );
 };
 
