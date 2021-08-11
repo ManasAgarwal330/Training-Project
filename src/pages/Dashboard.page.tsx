@@ -12,7 +12,7 @@ const Dashboard: FC<Props> = (props) => {
     <>
       <div>This is dashboard page.</div>
       <div>
-        <Link to="/recordings">
+        <Link to="/recordings/1/2">
           <span className="text-blue-500">Go To Recordings Page.</span>
         </Link>
       </div>
