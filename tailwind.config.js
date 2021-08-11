@@ -9,6 +9,7 @@ module.exports = {
         lightGray: "#F5F5F5",
         blueDark: "#0e1726",
         blueDarkLight: "#495057",
+        grayLightest: "#f1f2f3",
       },
       fontFamily: {
         display: "Nunito",
