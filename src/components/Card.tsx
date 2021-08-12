@@ -4,12 +4,13 @@ interface Props {
   name?: string;
   description?: string;
   url?: string;
+  index:number,
 }
 
 const Card: FC<Props> = (props) => {
   return (
     <>
-      <div className="flex my-2 w-120">
+      <div className={`flex my-3 py-4 px-4 rounded-lg w-full border shadow-md ${(props.index % 2===0) ? 'bg-gray-500' : ''}`}>
         <div className="h-20 w-20">
           <img src={props.url} alt="Group" className="rounded-lg"/>
         </div>

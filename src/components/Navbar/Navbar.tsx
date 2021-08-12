@@ -10,7 +10,7 @@ const Navbar: FC<Props> = (props) => {
   return (
     <>
       <NavbarSearchSection open={openNavbar} setOpen={setOpenNavbar} />
-      <div className="bg-blueDark p-1 h-12 w-full flex items-center font-display fixed top-0 lg:z-10">
+      <div className="bg-blueDark p-1 h-12 w-full flex items-center font-display sticky top-0 z-10 mx-0 my-0 box-border">
         <div className="flex items-center md:flex-grow lg:flex-grow-0">
           <img
             src="https://designreset.com/cork/ltr/demo4/assets/img/logo.svg"

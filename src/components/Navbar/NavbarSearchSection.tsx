@@ -21,7 +21,7 @@ const NavbarSearchSection: FC<Props> = ({ open, setOpen }) => {
           leaveFrom="translate-y-0"
           leaveTo="-translate-y-full"
         >
-            <div className="bg-blueDark p-1 h-12 w-full  flex items-center overflow-hidden font-display absolute top-0 left-0 right-0">
+            <div className="bg-blueDark p-1 h-10 box-border w-full  flex items-center overflow-hidden font-display absolute top-0 left-0 right-0 z-10">
               <div className="flex items-center w-full">
                 <BsSearch className="w-5 h-5 mr-2 text-gray-500 ml-2" />
                 <input

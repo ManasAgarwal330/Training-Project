@@ -11,8 +11,7 @@ interface Props {
 
 const SideBar: FC<Props> = ({ open }) => {
   return (
-    <>
-      <Transition.Root show={open}>
+      <Transition show={open}>
         <Transition.Child
           enter="ease-in-out duration-1000 transform transition-all"
           enterFrom="-translate-x-full"
@@ -20,8 +19,9 @@ const SideBar: FC<Props> = ({ open }) => {
           leave="ease-in-out duration-1000 transform transition-all"
           leaveFrom="translate-0"
           leaveTo="-translate-x-full"
+          as={Fragment}
         >
-          <div className="w-56 h-screen bg-grayLightest absolute left-0">
+          <div className="w-56 fixed left-0 top-0 bottom-0 pt-20 bg-grayLightest rounded-tr-md rounded-br-md">
             <ul className="flex-col mt-9 px-2">
               <ListItem title="Dashboard" Icon={AiOutlineHome} isArrow={true} />
               <ListItem title="Apps" Icon={BiChip} isArrow={true} />
@@ -29,8 +29,7 @@ const SideBar: FC<Props> = ({ open }) => {
             </ul>
           </div>
         </Transition.Child>
-      </Transition.Root>
-    </>
+      </Transition>
   );
 };
 
@@ -42,13 +41,13 @@ export const SidebarSmall: FC<Props> = ({ open, setOpen }) => {
           <Transition.Child
             enter="ease-in-out duration-1000 transition-opacity"
             enterFrom="opacity-0"
-            enterTo="opacity-30"
-            entered="opacity-30"
+            enterTo="opacity-50"
+            entered="opacity-50"
             leave="ease-in-out duration-1000 transition-opacity"
-            leaveFrom="opacity-30"
+            leaveFrom="opacity-50"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="bg-gray-400 absolute inset-0 z-30" />
+            <Dialog.Overlay className="bg-gray-400 absolute inset-0 z-20" />
           </Transition.Child>
           <Transition.Child
             as={Fragment}
@@ -59,7 +58,7 @@ export const SidebarSmall: FC<Props> = ({ open, setOpen }) => {
             leaveFrom="translate-x-0"
             leaveTo="-translate-x-full"
           >
-            <div className="w-56 bg-grayLightest fixed left-0 top-0 bottom-0">
+            <div className="w-56 bg-grayLightest fixed left-0 top-0 bottom-0 z-20">
               <ul className="flex-col mt-9 px-2">
                 <ListItem
                   title="Dashboard"

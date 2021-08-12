@@ -24,7 +24,7 @@ interface User {
 interface GroupRequest {
   limit?: number;
   offset?: number;
-  query?: string;
+  query?: any;
   status: "all-groups" | "favourite" | "archived";
 }
 
