@@ -16,12 +16,12 @@ const AppContainer: FC<Props> = (props) => {
   return (
     <div className="box-border h-screen flex flex-col overflow-y-scroll overflow-x-hidden">
       <Navbar />
-      <div className="h-12 pl-2 py-1 box-border items-center hidden shadow-md z-10 sticky top-11 bg-white mx-0 my-0 lg:flex">
+      <div className="h-12 pl-2 py-1 box-border items-center hidden shadow-md z-10 sticky top-12 bg-white mx-0 my-0 lg:flex">
         <button onClick={() => setOpenSidebar((state) => !state)}>
           <GiHamburgerMenu className="h-6 w-6" />
         </button>
       </div>
-      <div className="h-12 pl-2 py-1 box-border items-center flex shadow-md sticky z-10 top-10 bg-white mx-0 my-0 lg:hidden">
+      <div className="h-12 pl-2 py-1 box-border items-center flex shadow-md sticky z-10 top-12 bg-white mx-0 my-0 lg:hidden">
         <button onClick={() => setOpenSmallSidebar((state) => !state)}>
           <GiHamburgerMenu className="h-6 w-6" />
         </button>

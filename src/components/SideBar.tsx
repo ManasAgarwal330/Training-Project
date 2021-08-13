@@ -11,25 +11,42 @@ interface Props {
 
 const SideBar: FC<Props> = ({ open }) => {
   return (
-      <Transition show={open}>
-        <Transition.Child
-          enter="ease-in-out duration-1000 transform transition-all"
-          enterFrom="-translate-x-full"
-          enterTo="translate-x-0"
-          leave="ease-in-out duration-1000 transform transition-all"
-          leaveFrom="translate-0"
-          leaveTo="-translate-x-full"
-          as={Fragment}
-        >
-          <div className="w-56 fixed left-0 top-0 bottom-0 pt-20 bg-grayLightest rounded-tr-md rounded-br-md">
-            <ul className="flex-col mt-9 px-2">
-              <ListItem title="Dashboard" Icon={AiOutlineHome} isArrow={true} />
-              <ListItem title="Apps" Icon={BiChip} isArrow={true} />
-              <ListItem title="Component" Icon={BiCube} />
-            </ul>
-          </div>
-        </Transition.Child>
-      </Transition>
+    <Transition show={open}>
+      <Transition.Child
+        enter="ease-in-out duration-1000 transform transition-all"
+        enterFrom="-translate-x-full"
+        enterTo="translate-x-0"
+        leave="ease-in-out duration-1000 transform transition-all"
+        leaveFrom="translate-0"
+        leaveTo="-translate-x-full"
+        as={Fragment}
+      >
+        <div className="w-56 fixed left-0 top-0 bottom-0 pt-20 overflow-y-scroll bg-grayLightest rounded-tr-md rounded-br-md">
+          <ul className="flex-col mt-9 px-2">
+            <ListItem
+              title="Dashboard"
+              Icon={AiOutlineHome}
+              isArrow={true}
+              content={["Sales", "Analytics"]}
+            />
+            <ListItem
+              title="Apps"
+              Icon={BiChip}
+              isArrow={true}
+              content={[
+                "Chat",
+                "MailBox",
+                "Todo List",
+                "Notes",
+                "Scrumboard",
+                "Practice",
+              ]}
+            />
+            <ListItem title="Component" Icon={BiCube} />
+          </ul>
+        </div>
+      </Transition.Child>
+    </Transition>
   );
 };
 
@@ -58,14 +75,27 @@ export const SidebarSmall: FC<Props> = ({ open, setOpen }) => {
             leaveFrom="translate-x-0"
             leaveTo="-translate-x-full"
           >
-            <div className="w-56 bg-grayLightest fixed left-0 top-0 bottom-0 z-20">
+            <div className="w-56 bg-grayLightest fixed overflow-y-scroll left-0 top-0 bottom-0 z-20">
               <ul className="flex-col mt-9 px-2">
                 <ListItem
                   title="Dashboard"
                   Icon={AiOutlineHome}
                   isArrow={true}
+                  content={["Sales", "Analytics"]}
                 />
-                <ListItem title="Apps" Icon={BiChip} isArrow={true} />
+                <ListItem
+                  title="Apps"
+                  Icon={BiChip}
+                  isArrow={true}
+                  content={[
+                    "Chat",
+                    "MailBox",
+                    "Todo List",
+                    "Notes",
+                    "Scrumboard",
+                    "Practice",
+                  ]}
+                />
                 <ListItem title="Component" Icon={BiCube} />
               </ul>
             </div>
