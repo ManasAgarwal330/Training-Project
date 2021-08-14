@@ -23,3 +23,8 @@ interface LoginRequest {
       return response.data.user;
     });
   };
+
+  export const Logout = () => {
+      localStorage.removeItem(LS_AUTH_TOKEN);
+      window.location.href="/login";
+  }

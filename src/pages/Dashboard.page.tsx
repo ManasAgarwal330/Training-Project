@@ -14,7 +14,7 @@ const Dashboard: FC<Props> = (props) => {
     });
   }, [query]);
   return (
-    <div className="h-full px-4">
+    <div className="h-full px-4 border bg-white">
       <div className="flex justify-center mt-4">
         <input
           type="text"

@@ -16,7 +16,7 @@ const AppContainer: FC<Props> = (props) => {
   return (
     <div className="box-border h-screen flex flex-col overflow-y-scroll overflow-x-hidden">
       <Navbar />
-      <div className="h-12 pl-2 py-1 box-border items-center hidden shadow-md z-10 sticky top-12 bg-white mx-0 my-0 lg:flex">
+      <div className="h-12 pl-2 py-1 box-border items-center hidden shadow-md sticky z-10 top-12 bg-white mx-0 my-0 lg:flex">
         <button onClick={() => setOpenSidebar((state) => !state)}>
           <GiHamburgerMenu className="h-6 w-6" />
         </button>
@@ -32,7 +32,7 @@ const AppContainer: FC<Props> = (props) => {
         <SideBar open={openSidebar} setOpen={setOpenSidebar} />
         <SidebarSmall open={openSmallSidebar} setOpen={setOpenSmallSidebar} />
         <div
-          className={`px-2 py-2 transform transition-transform ease-in-out w-full duration-1000 ${
+          className={`px-2 py-2 transform transition-transform ease-in-out w-full duration-1000 bg-grayLightest ${
             openSidebar ? "translate-x-56 mr-56" : "translate-x-0"
           }`}
         >
