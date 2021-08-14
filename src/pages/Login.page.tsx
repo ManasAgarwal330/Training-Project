@@ -9,7 +9,7 @@ import Footer from "../components/Footer";
 import Input from "../components/Input/Input";
 import Button from "../components/Button/Button";
 import { FaSpinner } from "react-icons/fa";
-import { login } from "../api";
+import { login } from "../api/auth";
 
 interface Props {}
 

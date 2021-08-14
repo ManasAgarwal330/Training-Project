@@ -1,14 +1,17 @@
 import { FC, memo, useEffect, useState } from "react";
-import { fetchGroup } from "../api";
+import { fetchGroup } from "../api/groups";
 import Card from "../components/Card";
 
 interface Props {}
 
 const Dashboard: FC<Props> = (props) => {
-  const [data,setData] = useState<any>([]);
-  const [query,setQuery] = useState<any>("");
+  const [data, setData] = useState<any>([]);
+  const [query, setQuery] = useState("");
   useEffect(() => {
-    fetchGroup({ status: "all-groups", query: query }).then((group) => setData(group));
+    fetchGroup({ status: "all-groups",limit:20,query:query}).then((group) => {
+      console.log(group);
+      return setData(group);
+    });
   }, [query]);
   return (
     <div className="h-full px-4">
@@ -17,10 +20,21 @@ const Dashboard: FC<Props> = (props) => {
           type="text"
           placeholder="Search Groups..."
           className="border outline-none border-black py-2 px-4 w-full rounded-lg bg-transparent"
-          onChange = {(data) => setQuery(data)}
+          onChange={(event) => {
+            setQuery(event.target.value);
+          }}
         />
       </div>
-      {data && data.map((item:any,index:number) => <Card key={index} index={index} name={item.name} description={item.description} url={item.url}/>)}
+      {data &&
+        data.map((item: any, index: number) => (
+          <Card
+            key={index}
+            index={index}
+            name={item.name}
+            description={item.description}
+            url={item.url}
+          />
+        ))}
     </div>
   );
 };
