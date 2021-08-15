@@ -1,4 +1,4 @@
-import { FC, memo, useState } from "react";
+import { FC, memo, useState,useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { BiUser } from "react-icons/bi";
 import { RiLockPasswordLine } from "react-icons/ri";
@@ -10,12 +10,14 @@ import Input from "../components/Input/Input";
 import Button from "../components/Button/Button";
 import { FaSpinner } from "react-icons/fa";
 import { login } from "../api/auth";
+import UserContext from "../UserContext";
 
 interface Props {}
 
 const Login: FC<Props> = (props) => {
   const [enabled, setEnabled] = useState(false);
   const history = useHistory();
+  const {setUser} = useContext(UserContext);
   const myForm = useFormik({
     initialValues: {
       email: "",
@@ -27,7 +29,7 @@ const Login: FC<Props> = (props) => {
     }),
     onSubmit: (data) => {
       login(data).then((user) => {
-        console.log(user.first_name)
+        setUser(user);
         history.push("./dashboard");
       });
     },

@@ -2,26 +2,27 @@ import { FC, memo, useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { fetchGroup } from "../api/groups";
 import Card from "../components/Card";
+import { Groups } from "../modals/Groups";
 
 interface Props {}
 
 const Dashboard: FC<Props> = (props) => {
-  const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<Groups[] | void>();
   const [query, setQuery] = useState<string|undefined>();
   const [isLoading, setIsLoading] = useState(false);
-  const [isData, setIsData] = useState(false);
+  const [isData, setIsData] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
     fetchGroup({ status: "all-groups", limit: 20, query: query }).then(
       (group) => {
-        console.log(group, typeof group);
-        setIsLoading(false);
+        console.log(group)
         if (group!.length === 0) {
-          console.log("inside is data");
           setData(undefined);
+          setIsLoading(false);
           return setIsData(false);
         }
+        setIsLoading(false);
         setIsData(true);
         return setData(group);
       }
@@ -41,11 +42,10 @@ const Dashboard: FC<Props> = (props) => {
         />
       </div>
       {isLoading && (
-        <div className="h-full w-full flex items-center justify-center">
+        <div className="mt-28 flex items-center justify-center">
           <FaSpinner className="h-14 w-14 animate-spin text-primary" />
         </div>
       )}
-      {console.log(isData)}
       {!isData && (
         <div className="w-full flex justify-center mt-10 font-display">
           No Results Found
