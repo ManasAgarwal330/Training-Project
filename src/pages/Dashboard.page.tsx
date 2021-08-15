@@ -1,4 +1,5 @@
 import { FC, memo, useEffect, useState } from "react";
+import { FaSpinner } from "react-icons/fa";
 import { fetchGroup } from "../api/groups";
 import Card from "../components/Card";
 
@@ -6,12 +7,25 @@ interface Props {}
 
 const Dashboard: FC<Props> = (props) => {
   const [data, setData] = useState<any>([]);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState<string|undefined>();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isData, setIsData] = useState(false);
+
   useEffect(() => {
-    fetchGroup({ status: "all-groups",limit:20,query:query}).then((group) => {
-      console.log(group);
-      return setData(group);
-    });
+    setIsLoading(true);
+    fetchGroup({ status: "all-groups", limit: 20, query: query }).then(
+      (group) => {
+        console.log(group, typeof group);
+        setIsLoading(false);
+        if (group!.length === 0) {
+          console.log("inside is data");
+          setData(undefined);
+          return setIsData(false);
+        }
+        setIsData(true);
+        return setData(group);
+      }
+    );
   }, [query]);
   return (
     <div className="h-full px-4 border bg-white">
@@ -21,10 +35,22 @@ const Dashboard: FC<Props> = (props) => {
           placeholder="Search Groups..."
           className="border outline-none border-black py-2 px-4 w-full rounded-lg bg-transparent"
           onChange={(event) => {
+            setIsLoading(true);
             setQuery(event.target.value);
           }}
         />
       </div>
+      {isLoading && (
+        <div className="h-full w-full flex items-center justify-center">
+          <FaSpinner className="h-14 w-14 animate-spin text-primary" />
+        </div>
+      )}
+      {console.log(isData)}
+      {!isData && (
+        <div className="w-full flex justify-center mt-10 font-display">
+          No Results Found
+        </div>
+      )}
       {data &&
         data.map((item: any, index: number) => (
           <Card

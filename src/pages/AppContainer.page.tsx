@@ -32,7 +32,7 @@ const AppContainer: FC<Props> = (props) => {
         <SideBar open={openSidebar} setOpen={setOpenSidebar} />
         <SidebarSmall open={openSmallSidebar} setOpen={setOpenSmallSidebar} />
         <div
-          className={`px-2 py-2 transform transition-transform ease-in-out w-full duration-1000 bg-grayLightest ${
+          className={`px-2 py-2 transform transition-transform ease-in-out w-full duration-1000 bg-gray-300 ${
             openSidebar ? "translate-x-56 mr-56" : "translate-x-0"
           }`}
         >
