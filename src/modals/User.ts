@@ -1,14 +1,44 @@
 export interface User {
-  id: number;
-  guid: null;
-  first_name: string;
-  middle_name: null | string;
-  last_name: string;
-  role: "admin" | "advocate" | "staff";
-  status: "claimed" | "new";
-  profile_pic_url: null | string;
-  groupMemberStatus?:
-    | "invitation_accepted"
-    | "invited"
-    | "request_to_join_accepted";
+  __type:                      string;
+  id:                          number;
+  guid:                        null;
+  first_name:                  string;
+  middle_name ?:                string;
+  last_name:                   string;
+  role:                         "admin" | "advocate" | "staff";
+  status:                      "claimed" | "new";
+  profile_pic_url:             string;
+  email:                       string;
+  bio:                         string;
+  legal_name:                  null;
+  nick_name:                   null;
+  job_type:                    null;
+  phone_number:                string;
+  alternate_phone_number:      null;
+  gender:                      null;
+  birth_year:                  number;
+  birth_month:                 number;
+  birth_date:                  number;
+  death_year:                  null;
+  death_month:                 null;
+  death_date:                  null;
+  urls:                        any[];
+  last_invited_to_platform_at: null;
+  education:                   null;
+  hometown:                    null;
+  state_code:                  null;
+  home_state_code:             null;
+  is_2fa_enabled:              boolean;
+  default_2fa_type:            null;
+  created_at:                  Date;
+  updated_at:                  Date;
+  is_zoom_connected:           boolean;
+  person:                      null;
+  occupations:                 any[];
+  educations:                  any[];
+  blockedUsers:                any[];
+  memberToAdvocatePages:       any[];
+  ownerToAdvocatePages:        any[];
+  academic:                    null;
+  followedAcademics:           any[];
 }

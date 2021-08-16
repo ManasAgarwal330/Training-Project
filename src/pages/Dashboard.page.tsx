@@ -16,7 +16,6 @@ const Dashboard: FC<Props> = (props) => {
     setIsLoading(true);
     fetchGroup({ status: "all-groups", limit: 20, query: query }).then(
       (group) => {
-        console.log(group)
         if (group!.length === 0) {
           setData(undefined);
           setIsLoading(false);

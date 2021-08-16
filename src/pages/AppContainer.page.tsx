@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar/Navbar";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import SideBar, { SidebarSmall } from "../components/SideBar";
+import ProfilePage from './Profile.page';
 
 interface Props {}
 
@@ -42,6 +43,9 @@ const AppContainer: FC<Props> = (props) => {
             </Route>
             <Route path="/recordings/:batchNumber/:lectureNumber">
               <RecordingsPage />
+            </Route>
+            <Route path="/profile">
+              <ProfilePage />
             </Route>
           </Switch>
         </div>
