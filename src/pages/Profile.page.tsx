@@ -1,4 +1,5 @@
-import { FC, memo, useContext, useState } from "react";
+import React, { FC, memo, useContext, useState } from "react";
+import Button from "../components/Button/Button";
 import { User } from "../modals/User";
 import UserContext from "../UserContext";
 
@@ -13,12 +14,12 @@ const Profile: FC<Props> = (props) => {
     event:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setData((data) => {
       return { ...data, [event.target.name]: event.target.value };
     });
   };
-
   const getDaysInMonth = (month: number = 2, year: number = 2021) => {
     if (month === null) month = 1;
     if (year === null) month = 2021;
@@ -61,7 +62,9 @@ const Profile: FC<Props> = (props) => {
                 alt="Profile Pic"
                 className="h-28 w-28 border-none rounded-lg"
               />
-              <p className="text-primary pt-2 pb-3 lg:text-center">Upload Image</p>
+              <p className="text-primary pt-2 pb-3 lg:text-center">
+                Upload Image
+              </p>
             </div>
             <div className="lg:flex-grow lg:px-10">
               <div className="pt-4 sm:flex sm:justify-between md:space-x-2">
@@ -75,7 +78,8 @@ const Profile: FC<Props> = (props) => {
                   <input
                     type="text"
                     name="first_name"
-                    className="border-gray-400 rounded-md border py-1 text-black text-base outline-none pl-1"
+                    className="border-gray-400 rounded-md border py-1 
+                    text-black text-base outline-none pl-1"
                     value={data!.first_name}
                     onChange={(event) => onchange(event)}
                   />
@@ -140,7 +144,8 @@ const Profile: FC<Props> = (props) => {
                     name="birth_month"
                     onChange={(event) => onchange(event)}
                     value={data?.birth_month ? data.birth_month : ""}
-                    className="border-gray-400 rounded-md border py-2 text-black text-base outline-none pl-1 mb-4 flex-grow"
+                    className="border-gray-400 rounded-md border py-2 text-black text-base
+                     outline-none pl-1 mb-4 flex-grow"
                   >
                     <option value="">Month</option>
                     {monthName.map((item, index) => {
@@ -185,6 +190,36 @@ const Profile: FC<Props> = (props) => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="mt-2 w-full bg-white p-5">
+        <h3 className="px-2 pt-4 pb-5 text-md font-bold lg:text-lg">ABOUT</h3>
+        <div className="mx-4 md:mx-10">
+          <label
+            htmlFor="bio"
+            className="font-display text-sm text-gray-700 md:text-base"
+          >
+            Bio
+          </label>
+          <textarea
+            name="bio"
+            className="border h-52 w-full font-display text-gray-500 outline-none p-4"
+            value={data.bio}
+            onChange={(event) => onchange(event)}
+          />
+        </div>
+      </div>
+      <div
+        className="sticky h-14 rounded-tl-lg rounded-tr-lg border-black bottom-0 left-0 right-0 py-3 px-5"
+        style={{ background: "#191e3a" }}
+      >
+        <div className="w-full flex justify-between px-8">
+          <Button theme="primary" type="button" click={setData}>
+            Reset All
+          </Button>
+          <Button theme="success" type="button" click={() => {}}>
+            Save Changes
+          </Button>
         </div>
       </div>
     </>

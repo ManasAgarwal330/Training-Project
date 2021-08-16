@@ -101,6 +101,7 @@ const SignUp: FC<Props> = (props) => {
                   type="submit"
                   disabled={!myForm.isValid}
                   className="px-10"
+                  click={() => {}}
                 >
                   Get Started!
                 </Button>

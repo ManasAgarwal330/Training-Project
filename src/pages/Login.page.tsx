@@ -79,7 +79,7 @@ const Login: FC<Props> = (props) => {
                 />
               </div>
               <div className="mb-5 flex items-center ">
-                <Button type="submit" disabled={!myForm.isValid}>
+                <Button type="submit" disabled={!myForm.isValid} click={() => {}}>
                   Log In
                 </Button>
                 <div className='h-8 w-8 ml-2'>
