@@ -7,7 +7,7 @@ import UserContext from "../UserContext";
 interface Props {}
 
 const Profile: FC<Props> = (props) => {
-  const { user } = useContext(UserContext);
+  const { user,setUser } = useContext(UserContext);
 
   const [data, setData] = useState<User>(user!);
   const [changedData, setChangedData] = useState<UserUpdate>();
@@ -237,7 +237,7 @@ const Profile: FC<Props> = (props) => {
             type="button"
             onClick={() => {
               meUpdate(changedData).then((user) => {
-                window.location.href = "/profile";
+                setUser(user);
               });
             }}
           >

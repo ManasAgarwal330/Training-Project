@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FiUser, FiLogOut } from "react-icons/fi";
 import { Logout } from "../api/auth";
 import { useContext } from "react";
+import { RiDashboardLine } from "react-icons/ri";
 import UserContext from "../UserContext";
 
 interface Props {}
@@ -45,31 +46,48 @@ const Profile: FC<Props> = (props) => {
               {user!.first_name}
             </span>
           </Menu.Item>
-          <Menu.Item as="div" className="border-b px-1 mx-2 py-1">
+          <Link to="/profile" className={`font-display`}>
+            <Menu.Item as="div" className="border-b px-1 mx-2 py-1">
+              {({ active }) => (
+                <div
+                  className={`flex items-center justify-center rounded-md px-1 py-1 ${
+                    active ? "bg-blue-400 text-white" : "text-gray-400"
+                  }`}
+                >
+                  <FiUser className="h-4 w-4 mr-2 ml-4" />
+                  <span className="flex-grow text-left"> Profile </span>
+                </div>
+              )}
+            </Menu.Item>
+          </Link>
+          <Link to="/dashboard" className={`font-display`}>
+            <Menu.Item as="div" className="border-b px-1 mx-2 py-1">
+              {({ active }) => (
+                <div
+                  className={`flex items-center justify-center rounded-md px-1 py-1 ${
+                    active ? "bg-blue-400 text-white" : "text-gray-400"
+                  }`}
+                >
+                  <RiDashboardLine className="h-4 w-4 mr-2 ml-4" />
+
+                  <span className="flex-grow text-left"> Dashboard </span>
+                </div>
+              )}
+            </Menu.Item>
+          </Link>
+          <Menu.Item
+            as="div"
+            className="border-b px-1 mx-2 py-1"
+            onClick={Logout}
+          >
             {({ active }) => (
               <div
                 className={`flex items-center justify-center rounded-md px-1 py-1 ${
                   active ? "bg-blue-400 text-white" : "text-gray-400"
                 }`}
               >
-                <FiUser className="h-4 w-4 mr-2" />
-                <Link to="/profile" className={`font-display`}>
-                  Profile
-                </Link>
-              </div>
-            )}
-          </Menu.Item>
-          <Menu.Item as="div" className="border-b px-1 mx-2 py-1">
-            {({ active }) => (
-              <div
-                className={`flex items-center justify-center rounded-md px-1 py-1 ${
-                  active ? "bg-blue-400 text-white" : "text-gray-400"
-                }`}
-              >
-                <FiLogOut className="h-4 w-4 mr-2" />
-                <button className={`font-display`} onClick={Logout}>
-                  Logout
-                </button>
+                <FiLogOut className="h-4 w-4 mr-2 ml-4" />
+                <span className="flex-grow text-left"> Logout </span>
               </div>
             )}
           </Menu.Item>

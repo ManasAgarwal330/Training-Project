@@ -40,9 +40,13 @@ export const me = () => {
   });
 };
 
+interface MeUpdateResponse{
+  data:User;
+}
+
 export const meUpdate = (data: UserUpdate | undefined) => {
   const url = BASE_URL + "/me";
-  return axios.put<User>(url, data).then((response) => {
-    return response.data;
+  return axios.put<MeUpdateResponse>(url, data).then((response) => {
+    return response.data.data;
   });
 };
