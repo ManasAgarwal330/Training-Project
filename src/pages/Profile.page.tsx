@@ -213,7 +213,6 @@ const Profile: FC<Props> = (props) => {
             name="bio"
             className="border h-52 w-full font-display text-gray-500 outline-none p-4"
             value={data!.bio}
-            onChange={(event) => onchange(event)}
           />
         </div>
       </div>
