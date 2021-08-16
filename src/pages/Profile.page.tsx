@@ -1,6 +1,7 @@
 import React, { FC, memo, useContext, useState } from "react";
+import { meUpdate } from "../api/auth";
 import Button from "../components/Button/Button";
-import { User } from "../modals/User";
+import { User, UserUpdate } from "../modals/User";
 import UserContext from "../UserContext";
 
 interface Props {}
@@ -9,6 +10,7 @@ const Profile: FC<Props> = (props) => {
   const { user } = useContext(UserContext);
 
   const [data, setData] = useState<User>(user!);
+  const [changedData, setChangedData] = useState<UserUpdate>();
 
   const onchange = (
     event:
@@ -19,16 +21,22 @@ const Profile: FC<Props> = (props) => {
     setData((data) => {
       return { ...data, [event.target.name]: event.target.value };
     });
+    setChangedData((changedData) => {
+      return { ...changedData, [event.target.name]: event.target.value };
+    });
   };
-  const getDaysInMonth = (month: number = 2, year: number = 2021) => {
-    if (month === null) month = 1;
-    if (year === null) month = 2021;
+
+  const getDaysInMonth = (month: number, year: number): number => {
+    if (isNaN(month)) month = 1;
+    if (isNaN(year)) year = 2021;
 
     return new Date(year, month, 0).getDate();
   };
 
   const days = Array.from(
-    Array(getDaysInMonth(data!.birth_month, data!.birth_year)).keys()
+    Array(
+      getDaysInMonth(parseInt(data!.birth_month), parseInt(data!.birth_year))
+    ).keys()
   );
 
   const monthName = [
@@ -204,7 +212,7 @@ const Profile: FC<Props> = (props) => {
           <textarea
             name="bio"
             className="border h-52 w-full font-display text-gray-500 outline-none p-4"
-            value={data.bio}
+            value={data!.bio}
             onChange={(event) => onchange(event)}
           />
         </div>
@@ -214,10 +222,25 @@ const Profile: FC<Props> = (props) => {
         style={{ background: "#191e3a" }}
       >
         <div className="w-full flex justify-between px-8">
-          <Button theme="primary" type="button" click={setData}>
+          <Button
+            theme="primary"
+            type="button"
+            onClick={() => {
+              setChangedData(undefined);
+              setData(user!);
+            }}
+          >
             Reset All
           </Button>
-          <Button theme="success" type="button" click={() => {}}>
+          <Button
+            theme="success"
+            type="button"
+            onClick={() => {
+              meUpdate(changedData).then((user) => {
+                window.location.href = "/profile";
+              });
+            }}
+          >
             Save Changes
           </Button>
         </div>

@@ -14,7 +14,6 @@ const AuthHeroPageLazy = lazy(() => import("./pages/AuthHero.page"));
 
 const App: FC<Props> = (props) => {
   const [user, setUser] = useState<User>();
-  console.log(user);
   const token = localStorage.getItem(LS_AUTH_TOKEN);
 
   useEffect(() => {

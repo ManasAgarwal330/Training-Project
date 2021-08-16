@@ -13,7 +13,7 @@ const Dashboard: FC<Props> = (props) => {
   useEffect(() => {
     fetchGroup({ status: "all-groups", limit: 20, query: query }).then(
       (group) => {
-        if (group!.length === 0) {
+        if (group && group!.length === 0) {
           setData(undefined);
           return setIsData(false);
         }
