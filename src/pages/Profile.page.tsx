@@ -220,7 +220,7 @@ const Profile: FC<Props> = (props) => {
         className="sticky h-14 rounded-tl-lg rounded-tr-lg border-black bottom-0 left-0 right-0 py-3 px-5"
         style={{ background: "#191e3a" }}
       >
-        <div className="w-full flex justify-between px-8">
+        <div className="w-full flex justify-between px-0 sm:px-8 ">
           <Button
             theme="primary"
             type="button"
