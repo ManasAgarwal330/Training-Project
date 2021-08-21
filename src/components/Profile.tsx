@@ -77,7 +77,7 @@ const Profile: FC<Props> = (props) => {
           </Link>
           <Menu.Item
             as="div"
-            className="border-b px-1 mx-2 py-1"
+            className="border-b px-1 mx-2 py-1 cursor-pointer"
             onClick={Logout}
           >
             {({ active }) => (

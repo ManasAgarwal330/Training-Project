@@ -1,4 +1,4 @@
-import { FC, lazy, memo, Suspense, useEffect, useState } from "react";
+import { FC, lazy, memo, Suspense, useEffect, useState, useMemo } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import NotFoundPage from "./pages/NotFound.page";
 import { LS_AUTH_TOKEN } from "./api/base";
@@ -25,6 +25,10 @@ const App: FC<Props> = (props) => {
     // eslint-disable-next-line
   }, []);
 
+  const data = useMemo(() => {
+    return { user, setUser };
+  }, [user, setUser]);
+
   if (token && !user) {
     return (
       <div className="h-screen w-screen flex justify-center items-center">
@@ -32,9 +36,9 @@ const App: FC<Props> = (props) => {
       </div>
     );
   }
-
+  
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={data}>
       <Suspense
         fallback={
           <div className="h-screen w-screen flex justify-center items-center">
@@ -51,7 +55,11 @@ const App: FC<Props> = (props) => {
               {user ? <Redirect to="/dashboard" /> : <AuthHeroPageLazy />}
             </Route>
             <Route
-              path={["/dashboard", "/recordings/:batchNumber/:lectureNumber","/profile"]}
+              path={[
+                "/dashboard",
+                "/recordings/:batchNumber/:lectureNumber",
+                "/profile",
+              ]}
               exact
             >
               {user ? <AppContainerPageLazy /> : <Redirect to="/login" />}
