@@ -2,14 +2,16 @@ import { Dialog, Transition } from "@headlessui/react";
 import { FC, Fragment, memo } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiChip, BiCube } from "react-icons/bi";
+import { useDispatch } from "react-redux";
+import { uiSmallSidebarToggle } from "../store";
 import ListItem from "./ListItem/ListItem";
 
 interface Props {
   open: boolean;
-  setOpen: (value: false) => void;
 }
 
 const SideBar: FC<Props> = ({ open }) => {
+
   return (
     <Transition show={open}>
       <Transition.Child
@@ -50,7 +52,12 @@ const SideBar: FC<Props> = ({ open }) => {
   );
 };
 
-export const SidebarSmall: FC<Props> = ({ open, setOpen }) => {
+export const SidebarSmall: FC<Props> = ({ open}) => {
+
+  const dispatch = useDispatch();
+  
+  const setOpen = (open:boolean) => (dispatch(uiSmallSidebarToggle(false)));
+
   return (
     <>
       <Transition.Root show={open} as={Fragment}>
