@@ -1,13 +1,15 @@
-import React, { FC, memo, useContext, useState } from "react";
+import React, { FC, memo, useState } from "react";
+import { useDispatch } from "react-redux";
 import { meUpdate } from "../api/auth";
 import Button from "../components/Button/Button";
 import { User, UserUpdate } from "../modals/User";
-import UserContext from "../UserContext";
+import { meFetchAction, useAppSelector } from "../store";
 
 interface Props {}
 
-const Profile: FC<Props> = (props) => {
-  const { user,setUser } = useContext(UserContext);
+const Profile: FC<Props> = () => {
+  const user = useAppSelector(state => state.me);
+  const dispatch = useDispatch();
 
   const [data, setData] = useState<User>(user!);
   const [changedData, setChangedData] = useState<UserUpdate>();
@@ -236,7 +238,7 @@ const Profile: FC<Props> = (props) => {
             type="button"
             onClick={() => {
               meUpdate(changedData).then((user) => {
-                setUser(user);
+                dispatch(meFetchAction(user))
               });
             }}
           >

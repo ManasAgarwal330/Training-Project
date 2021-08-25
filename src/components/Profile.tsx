@@ -3,14 +3,14 @@ import { FC, memo, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { FiUser, FiLogOut } from "react-icons/fi";
 import { Logout } from "../api/auth";
-import { useContext } from "react";
 import { RiDashboardLine } from "react-icons/ri";
-import UserContext from "../UserContext";
+import { useAppSelector } from "../store";
+
 
 interface Props {}
 
 const Profile: FC<Props> = (props) => {
-  const { user } = useContext(UserContext);
+  const user = useAppSelector(state => state.me);
   return (
     <Menu as="div" className="px-2 pt-2">
       <Menu.Button>

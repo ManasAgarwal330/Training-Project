@@ -1,33 +1,30 @@
-import { FC, lazy, memo, Suspense, useEffect, useState, useMemo } from "react";
+import { FC, lazy, memo, Suspense, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import NotFoundPage from "./pages/NotFound.page";
 import { LS_AUTH_TOKEN } from "./api/base";
 import { FaSpinner } from "react-icons/fa";
-import { User } from "./modals/User";
 import { me } from "./api/auth";
-import UserContext from "./UserContext";
+import {meFetchAction, useAppSelector} from './store';
+import { useDispatch } from "react-redux";
 
 interface Props {}
 
 const AppContainerPageLazy = lazy(() => import("./pages/AppContainer.page"));
 const AuthHeroPageLazy = lazy(() => import("./pages/AuthHero.page"));
 
-const App: FC<Props> = (props) => {
-  const [user, setUser] = useState<User>();
+const App: FC<Props> = () => {
+  const user = useAppSelector(state => state.me);
   const token = localStorage.getItem(LS_AUTH_TOKEN);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!token) {
       return;
     }
 
-    me().then((u) => setUser(u));
+    me().then((u) => dispatch(meFetchAction(u)));
     // eslint-disable-next-line
   }, []);
-
-  const data = useMemo(() => {
-    return { user, setUser };
-  }, [user, setUser]);
 
   if (token && !user) {
     return (
@@ -38,7 +35,6 @@ const App: FC<Props> = (props) => {
   }
   
   return (
-    <UserContext.Provider value={data}>
       <Suspense
         fallback={
           <div className="h-screen w-screen flex justify-center items-center">
@@ -70,7 +66,6 @@ const App: FC<Props> = (props) => {
           </Switch>
         </BrowserRouter>
       </Suspense>
-    </UserContext.Provider>
   );
 };
 
