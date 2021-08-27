@@ -11,7 +11,7 @@ import Button from "../components/Button/Button";
 import { FaSpinner } from "react-icons/fa";
 import { login } from "../api/auth";
 import { useDispatch } from "react-redux";
-import { meFetchAction } from "../store";
+import { meLoginAction } from "../actions/auth.actions";
 
 interface Props {}
 
@@ -30,7 +30,7 @@ const Login: FC<Props> = () => {
     }),
     onSubmit: (data) => {
       login(data).then((user) => {
-        dispatch(meFetchAction(user));
+        dispatch(meLoginAction(user));
         history.push("./dashboard");
       });
     },

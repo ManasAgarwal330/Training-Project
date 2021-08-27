@@ -9,8 +9,8 @@ import { useAppSelector } from "../store";
 
 interface Props {}
 
-const Profile: FC<Props> = (props) => {
-  const user = useAppSelector(state => state.me);
+const Profile: FC<Props> = () => {
+  const userFirstName = useAppSelector(state => state.users.byId[state.auth.id!].first_name);
   return (
     <Menu as="div" className="px-2 pt-2">
       <Menu.Button>
@@ -43,7 +43,7 @@ const Profile: FC<Props> = (props) => {
               className="h-6 w-6 rounded-full mr-8"
             />
             <span className="font-display text-gray-400">
-              {user!.first_name}
+              {userFirstName}
             </span>
           </Menu.Item>
           <Link to="/profile" className={`font-display`}>

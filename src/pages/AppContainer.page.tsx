@@ -6,14 +6,15 @@ import Navbar from "../components/Navbar/Navbar";
 import { GiHamburgerMenu } from "react-icons/gi";
 import SideBar, { SidebarSmall } from "../components/SideBar";
 import ProfilePage from './Profile.page';
-import { uiSidebarToggle, uiSmallSidebarToggle, useAppSelector } from "../store";
+import { useAppSelector } from "../store";
 import { useDispatch } from "react-redux";
+import { uiSidebarToggle, uiSmallSidebarToggle } from "../actions/ui.action";
 
 interface Props {}
 
 const AppContainer: FC<Props> = () => {
-  const openSidebar = useAppSelector((state) => state.isSidebarOpen);
-  const openSmallSidebar = useAppSelector((state) => state.isSmallSidebarOpen);
+  const openSidebar = useAppSelector((state) => state.ui.isSidebarOpen);
+  const openSmallSidebar = useAppSelector((state) => state.ui.isSmallSidebarOpen);
   const dispatch = useDispatch();
 
   return (

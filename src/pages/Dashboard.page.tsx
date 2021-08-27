@@ -1,16 +1,17 @@
 import { FC, memo, useEffect} from "react";
 import { useDispatch } from "react-redux";
+import { groupsQuery, groupsQueryCompleted } from "../actions/groups.actions";
 import { fetchGroup } from "../api/groups";
 import Card from "../components/Card";
-import { groupsQuery, groupsQueryCompleted, useAppSelector } from "../store";
+import { useAppSelector } from "../store";
 
 interface Props {}
 
 const Dashboard: FC<Props> = () => {
-  const query = useAppSelector((state) => state.query);
+  const query = useAppSelector((state) => state.groups.query);
   const groups = useAppSelector((state) => {
-    const groupIds = state.groupQueryMap[state.query] || [];
-    const groups = groupIds.map(id => state.groups[id]);
+    const groupIds = state.groups.queryMap[state.groups.query] || [];
+    const groups = groupIds.map(id => state.groups.byId[id]);
     return groups;
   })
   const dispatch = useDispatch();

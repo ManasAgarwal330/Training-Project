@@ -1,14 +1,15 @@
 import React, { FC, memo, useState } from "react";
 import { useDispatch } from "react-redux";
+import { meFetchAction } from "../actions/auth.actions";
 import { meUpdate } from "../api/auth";
 import Button from "../components/Button/Button";
 import { User, UserUpdate } from "../modals/User";
-import { meFetchAction, useAppSelector } from "../store";
+import { useAppSelector } from "../store";
 
 interface Props {}
 
 const Profile: FC<Props> = () => {
-  const user = useAppSelector(state => state.me);
+  const user = useAppSelector(state => state.users.byId[state.auth.id!]);
   const dispatch = useDispatch();
 
   const [data, setData] = useState<User>(user!);

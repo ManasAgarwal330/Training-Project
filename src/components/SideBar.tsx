@@ -3,7 +3,7 @@ import { FC, Fragment, memo } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiChip, BiCube } from "react-icons/bi";
 import { useDispatch } from "react-redux";
-import { uiSmallSidebarToggle } from "../store";
+import { uiSmallSidebarToggle } from "../actions/ui.action";
 import ListItem from "./ListItem/ListItem";
 
 interface Props {
