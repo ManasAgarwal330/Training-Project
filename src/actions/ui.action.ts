@@ -1,12 +1,21 @@
-export const UI_TOGGLE_SIDEBAR = "ui/sidebar_toggle";
-export const UI_TOGGLE_SMALL_SIDEBAR = "ui/small_sidebar_toggle";
+import { bindActionCreators } from "redux";
+import { store } from "../store";
+import { UI_TOGGLE_SIDEBAR, UI_TOGGLE_SMALL_SIDEBAR } from "./actions.constant";
 
-export const uiSidebarToggle = (open: boolean) => ({
-    type: UI_TOGGLE_SIDEBAR,
-    payload: open,
-  });
-  
-  export const uiSmallSidebarToggle = (open: boolean) => ({
-    type: UI_TOGGLE_SMALL_SIDEBAR,
-    payload: open,
-  });
+const uiSidebarToggle = (open: boolean) => ({
+  type: UI_TOGGLE_SIDEBAR,
+  payload: open,
+});
+
+const uiSmallSidebarToggle = (open: boolean) => ({
+  type: UI_TOGGLE_SMALL_SIDEBAR,
+  payload: open,
+});
+
+export const uiActions = bindActionCreators(
+  {
+    sidebar: uiSidebarToggle,
+    smallSidebar: uiSmallSidebarToggle,
+  },
+  store.dispatch
+);

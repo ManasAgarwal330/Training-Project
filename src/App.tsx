@@ -5,8 +5,7 @@ import { LS_AUTH_TOKEN } from "./api/base";
 import { FaSpinner } from "react-icons/fa";
 import { me } from "./api/auth";
 import { useAppSelector } from "./store";
-import { useDispatch } from "react-redux";
-import { meFetchAction } from "./actions/auth.actions";
+import { authActions } from "./actions/auth.actions";
 
 interface Props {}
 
@@ -18,14 +17,13 @@ const App: FC<Props> = () => {
     return state.auth.id !== undefined ? state.users.byId[state.auth.id] : undefined;
   });
   const token = localStorage.getItem(LS_AUTH_TOKEN);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!token) {
       return;
     }
 
-    me().then((u) => dispatch(meFetchAction(u)));
+    me().then((u) => authActions.fetch(u));
     // eslint-disable-next-line
   }, []);
 

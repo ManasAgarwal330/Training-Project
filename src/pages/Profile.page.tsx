@@ -1,6 +1,5 @@
 import React, { FC, memo, useState } from "react";
-import { useDispatch } from "react-redux";
-import { meFetchAction } from "../actions/auth.actions";
+import { authActions } from "../actions/auth.actions";
 import { meUpdate } from "../api/auth";
 import Button from "../components/Button/Button";
 import { User, UserUpdate } from "../modals/User";
@@ -10,7 +9,6 @@ interface Props {}
 
 const Profile: FC<Props> = () => {
   const user = useAppSelector(state => state.users.byId[state.auth.id!]);
-  const dispatch = useDispatch();
 
   const [data, setData] = useState<User>(user!);
   const [changedData, setChangedData] = useState<UserUpdate>();
@@ -239,7 +237,7 @@ const Profile: FC<Props> = () => {
             type="button"
             onClick={() => {
               meUpdate(changedData).then((user) => {
-                dispatch(meFetchAction(user))
+                authActions.fetch(user);
               });
             }}
           >

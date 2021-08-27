@@ -2,7 +2,7 @@ import { AnyAction, Reducer } from "redux";
 import {
   UI_TOGGLE_SIDEBAR,
   UI_TOGGLE_SMALL_SIDEBAR,
-} from "../actions/ui.action";
+} from "../actions/actions.constant";
 
 export interface UiState {
   isSidebarOpen: boolean;

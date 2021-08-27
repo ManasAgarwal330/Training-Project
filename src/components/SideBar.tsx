@@ -2,8 +2,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { FC, Fragment, memo } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiChip, BiCube } from "react-icons/bi";
-import { useDispatch } from "react-redux";
-import { uiSmallSidebarToggle } from "../actions/ui.action";
+import { uiActions } from "../actions/ui.action";
 import ListItem from "./ListItem/ListItem";
 
 interface Props {
@@ -52,11 +51,9 @@ const SideBar: FC<Props> = ({ open }) => {
   );
 };
 
-export const SidebarSmall: FC<Props> = ({ open}) => {
-
-  const dispatch = useDispatch();
+export const SidebarSmall: FC<Props> = ({open}) => {
   
-  const setOpen = (open:boolean) => (dispatch(uiSmallSidebarToggle(false)));
+  const setOpen = (open:boolean) => (uiActions.smallSidebar(false));
 
   return (
     <>

@@ -1,6 +1,5 @@
 import { FC, memo, useEffect} from "react";
-import { useDispatch } from "react-redux";
-import { groupsQuery, groupsQueryCompleted } from "../actions/groups.actions";
+import { groupActions } from "../actions/groups.actions";
 import { fetchGroup } from "../api/groups";
 import Card from "../components/Card";
 import { useAppSelector } from "../store";
@@ -14,12 +13,11 @@ const Dashboard: FC<Props> = () => {
     const groups = groupIds.map(id => state.groups.byId[id]);
     return groups;
   })
-  const dispatch = useDispatch();
 
   useEffect(() => {
     fetchGroup({ status: "all-groups", limit: 20, query: query }).then(
       (group) => {
-        return dispatch(groupsQueryCompleted(group,query));
+        return groupActions.queryCompleted(group,query);
       }
     );
     // eslint-disable-next-line
@@ -32,7 +30,7 @@ const Dashboard: FC<Props> = () => {
           placeholder="Search Groups..."
           className="border outline-none border-black py-2 px-4 w-full rounded-lg bg-transparent"
           onChange={(event) => {
-            dispatch(groupsQuery(event.target.value));
+            groupActions.query(event.target.value);
           }}
         />
       </div>

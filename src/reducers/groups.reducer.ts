@@ -1,5 +1,5 @@
 import { AnyAction, Reducer } from "redux";
-import { GROUPS_QUERY, GROUPS_QUERY_COMPLETED } from "../actions/groups.actions";
+import { GROUPS_QUERY, GROUPS_QUERY_COMPLETED } from "../actions/actions.constant";
 import { Groups } from "../modals/Groups";
 
 export interface GroupState {

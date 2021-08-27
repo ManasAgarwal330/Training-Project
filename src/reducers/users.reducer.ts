@@ -1,5 +1,5 @@
 import { AnyAction, Reducer } from "redux";
-import { ME_FETCH, ME_LOGIN } from "../actions/auth.actions";
+import { ME_FETCH, ME_LOGIN } from "../actions/actions.constant";
 import { User } from "../modals/User";
 
 export interface UserState {
