@@ -1,11 +1,12 @@
 import { AnyAction, Reducer } from "redux";
-import { GROUPS_QUERY, GROUPS_QUERY_COMPLETED } from "../actions/actions.constant";
+import {
+  GROUPS_QUERY,
+  GROUPS_QUERY_COMPLETED,
+} from "../actions/actions.constant";
 import { Groups } from "../modals/Groups";
+import { addMany, EntityState, getIds } from "./entity.reducer";
 
-export interface GroupState {
-  byId: {
-    [id: number]: Groups;
-  };
+export interface GroupState extends EntityState<Groups> {
   query: string;
   queryMap: { [query: string]: number[] };
 }
@@ -25,17 +26,14 @@ export const groupReducer: Reducer<GroupState> = (
       return { ...state, query: action.payload };
     case GROUPS_QUERY_COMPLETED:
       const groups = action.payload.groups as Groups[];
-      const groupId = groups.map((group) => group.id);
-      const groupMap = groups.reduce((prev, group) => {
-        return { ...prev, [group.id]: group };
-      }, {});
+      const groupId = getIds(groups);
+      const newState = addMany<GroupState>(state, groups);
       return {
-        ...state,
+        ...newState,
         queryMap: {
-          ...state.queryMap,
+          ...newState.queryMap,
           [action.payload.query]: groupId,
         },
-        byId: { ...state.byId, ...groupMap },
       };
     default:
       return state;
