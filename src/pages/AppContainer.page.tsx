@@ -8,14 +8,13 @@ import SideBar, { SidebarSmall } from "../components/SideBar";
 import ProfilePage from "./Profile.page";
 import { useAppSelector } from "../store";
 import { uiActions } from "../actions/ui.action";
+import { sidebarOpenSelector, smallSidebarOpenSelector } from "../selectors/ui.selectors";
 
 interface Props {}
 
 const AppContainer: FC<Props> = () => {
-  const openSidebar = useAppSelector((state) => state.ui.isSidebarOpen);
-  const openSmallSidebar = useAppSelector(
-    (state) => state.ui.isSmallSidebarOpen
-  );
+  const openSidebar = useAppSelector(sidebarOpenSelector);
+  const openSmallSidebar = useAppSelector(smallSidebarOpenSelector);
 
   return (
     <div className="box-border h-screen flex flex-col overflow-y-scroll overflow-x-hidden">

@@ -3,12 +3,13 @@ import { authActions } from "../actions/auth.actions";
 import { meUpdate } from "../api/auth";
 import Button from "../components/Button/Button";
 import { User, UserUpdate } from "../modals/User";
+import { meSelector } from "../selectors/auth.selectors";
 import { useAppSelector } from "../store";
 
 interface Props {}
 
 const Profile: FC<Props> = () => {
-  const user = useAppSelector(state => state.users.byId[state.auth.id!]);
+  const user = useAppSelector(meSelector);
 
   const [data, setData] = useState<User>(user!);
   const [changedData, setChangedData] = useState<UserUpdate>();

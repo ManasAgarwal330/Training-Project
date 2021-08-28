@@ -5,12 +5,13 @@ import { FiUser, FiLogOut } from "react-icons/fi";
 import { Logout } from "../api/auth";
 import { RiDashboardLine } from "react-icons/ri";
 import { useAppSelector } from "../store";
+import { meFirstNameSelector } from "../selectors/auth.selectors";
 
 
 interface Props {}
 
 const Profile: FC<Props> = () => {
-  const userFirstName = useAppSelector(state => state.users.byId[state.auth.id!].first_name);
+  const userFirstName = useAppSelector(meFirstNameSelector);
   return (
     <Menu as="div" className="px-2 pt-2">
       <Menu.Button>

@@ -2,17 +2,14 @@ import { FC, memo, useEffect} from "react";
 import { groupActions } from "../actions/groups.actions";
 import { fetchGroup } from "../api/groups";
 import Card from "../components/Card";
+import { groupQuerySelector, groupSelector } from "../selectors/groups.selectors";
 import { useAppSelector } from "../store";
 
 interface Props {}
 
 const Dashboard: FC<Props> = () => {
-  const query = useAppSelector((state) => state.groups.query);
-  const groups = useAppSelector((state) => {
-    const groupIds = state.groups.queryMap[state.groups.query] || [];
-    const groups = groupIds.map(id => state.groups.byId[id]);
-    return groups;
-  })
+  const query = useAppSelector(groupQuerySelector);
+  const groups = useAppSelector(groupSelector);
 
   useEffect(() => {
     fetchGroup({ status: "all-groups", limit: 20, query: query }).then(

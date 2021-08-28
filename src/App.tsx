@@ -6,6 +6,7 @@ import { FaSpinner } from "react-icons/fa";
 import { me } from "./api/auth";
 import { useAppSelector } from "./store";
 import { authActions } from "./actions/auth.actions";
+import { meSelector } from "./selectors/auth.selectors";
 
 interface Props {}
 
@@ -13,9 +14,7 @@ const AppContainerPageLazy = lazy(() => import("./pages/AppContainer.page"));
 const AuthHeroPageLazy = lazy(() => import("./pages/AuthHero.page"));
 
 const App: FC<Props> = () => {
-  const user = useAppSelector((state) => {
-    return state.auth.id !== undefined ? state.users.byId[state.auth.id] : undefined;
-  });
+  const user = useAppSelector(meSelector);
   const token = localStorage.getItem(LS_AUTH_TOKEN);
 
   useEffect(() => {
