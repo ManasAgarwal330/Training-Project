@@ -25,7 +25,7 @@ export const groupSelector = createSelector(
   }
 );
 
-const groupQueryLoadingSelector = createSelector(
+export const groupQueryLoadingSelector = createSelector(
   [groupStateSelector],
   (groupState) => groupState.loadingQuery
 );

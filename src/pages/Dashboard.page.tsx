@@ -35,7 +35,7 @@ const Dashboard: FC<Props> = () => {
       </div>
       {loading && (
         <div
-          className={`w-full items-center justify-center mt-10 ${
+          className={`w-full items-center justify-center mt-10 mb-10 ${
             loading ? "flex" : "hidden"
           }`}
         >
