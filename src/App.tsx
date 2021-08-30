@@ -3,9 +3,8 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import NotFoundPage from "./pages/NotFound.page";
 import { LS_AUTH_TOKEN } from "./api/base";
 import { FaSpinner } from "react-icons/fa";
-import { me } from "./api/auth";
+import { me } from "./middlewares/auth.middleware";
 import { useAppSelector } from "./store";
-import { authActions } from "./actions/auth.actions";
 import { meSelector } from "./selectors/auth.selectors";
 
 interface Props {}
@@ -22,7 +21,7 @@ const App: FC<Props> = () => {
       return;
     }
 
-    me().then((u) => authActions.fetch(u));
+    me();
     // eslint-disable-next-line
   }, []);
 

@@ -24,3 +24,13 @@ export const groupSelector = createSelector(
     return groups;
   }
 );
+
+const groupLoadingQuerySelector = createSelector(
+  [groupStateSelector],
+  (groupState) => groupState.loadingQuery
+);
+
+export const groupLoadingSelector = createSelector(
+  [groupQuerySelector, groupLoadingQuerySelector],
+  (query, loadingMap) => loadingMap[query]
+);
