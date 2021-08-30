@@ -33,7 +33,7 @@ const Dashboard: FC<Props> = () => {
           }}
         />
       </div>
-      {loading && groups.length === 0 && (
+      {loading && (
         <div
           className={`w-full items-center justify-center mt-10 ${
             loading ? "flex" : "hidden"
@@ -42,7 +42,7 @@ const Dashboard: FC<Props> = () => {
           <FaSpinner className="animate-spin text-primary h-14 w-14 sm:h-8 sm:w-8" />
         </div>
       )}
-      {groups &&
+      {
         groups.map((item: any, index: number) => (
           <Card
             key={index}

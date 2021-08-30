@@ -3,9 +3,9 @@ import { Groups } from "../modals/Groups";
 import { store } from "../store";
 import { GROUPS_QUERY, GROUPS_QUERY_COMPLETED } from "./actions.constant";
 
-const groupsQuery = (query: string) => ({
+const groupsQuery = (query: string,loading:boolean) => ({
   type: GROUPS_QUERY,
-  payload: query,
+  payload: {query,loading},
 });
 
 const groupsQueryCompleted = (groups: Groups[] | void, query: string) => ({
